@@ -1,0 +1,407 @@
+/* src/App.css */
+:root {
+  /* Variables estandarizadas con guion medio (-) */
+  --fondo-principal: #f6f5fc;
+  --primario: #937EEF;
+  --secundario: #99D9F2;
+  --destaque: #AA79EA;
+  --borde-suave: #CC9EE1;
+  --blanco: #ffffff;
+  --texto-oscuro: #2B2544;
+  --texto-suave: #736B92;
+}
+
+body {
+  background-color: var(--fondo-principal);
+  color: var(--texto-oscuro);
+  font-family: system-ui, -apple-system, sans-serif;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+}
+
+.contenedor-principal {
+  max-width: 1200px; 
+  width: 100%;
+
+}
+
+.header-principal {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.header-principal h1 {
+  margin-bottom: 0.2rem;
+  font-size: 4rem;
+  color: var(--primario);
+}
+
+.header-principal p {
+  color: var(--texto-suave);
+  font-size: 0.9rem;
+}
+
+main {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr 1fr; 
+  /*grid-template-rows: 0fr 0fr .5fr;*/
+  gap: 2rem;
+  align-items: start;
+}
+
+@media (max-width: 1024px) {
+  main {
+    grid-template-columns: 1fr 1fr; /* Vuelve a 2 columnas */
+  }
+
+  .seccion-balance {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 768px) {
+  main {
+    grid-template-columns: 1fr; /* 1 sola columna */
+  }
+  .seccion-balance {
+    grid-column: auto;
+  }
+}
+
+section {
+  background-color: var(--blanco);
+  padding: 1.5rem;
+  border-radius: 16px;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 8px 24px rgba(147, 126, 239, 0.08); 
+  border: 1px solid var(--borde-suave);
+}
+
+section h2 {
+  margin-top: 0;
+  font-size: 1.2rem;
+  color: var(--texto-oscuro);
+  border-bottom: 2px dashed var(--secundario);
+  padding-bottom: 0.5rem;
+}
+
+/* --- FORMULARIO --- */
+.formulario-gasto {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  margin-top: 0.5rem;
+}
+
+.campo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.campo label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--texto-oscuro);
+}
+
+.campo input,
+.campo select {
+  padding: 0.8rem;
+  border: 1px solid var(--borde-suave);
+  border-radius: 8px;
+  font-size: 1rem;
+  font-family: inherit;
+  color: var(--texto-oscuro);
+  background-color: var(--fondo-principal);
+  transition: border-color 0.3s ease;
+}
+
+.campo input:focus, 
+.campo select:focus {
+  outline: none;
+  border-color: var(--primario);
+  box-shadow: 0 0 0 3px rgba(147, 126, 239, 0.2); 
+}
+
+.campo input:hover,
+.campo select:hover {
+  border-color: var(--primario);
+}
+
+
+.btn-agregar {
+  background-color: var(--primario);
+  color: var(--blanco);
+  border: none;
+  padding: 1rem;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.1s;
+  margin-top: 0.5rem;
+}
+
+.btn-agregar:hover {
+  background-color: var(--destaque);
+  transform: scale(1.005);
+}
+
+.btn-agregar:active {
+  transform: scale(0.98); 
+}
+
+/* --- LISTA DE GASTOS --- */
+.lista-vacia {
+  color: var(--texto-suave);
+  text-align: center;
+  font-style: italic;
+  margin: 2rem 0;
+}
+
+.lista-gastos {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.tarjeta-gasto {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background-color: var(--fondo-principal);
+  border-radius: 12px;
+  border-left: 5px solid var(--primario);
+  transition: transform 0.2s ease;
+}
+
+.tarjeta-gasto:hover {
+  transform: translateX(4px); 
+}
+
+.gasto-info h3 {
+  margin: 0 0 0.3rem 0;
+  font-size: 1.1rem;
+  color: var(--texto-oscuro);
+}
+
+.gasto-monto {
+  font-weight: bold;
+  font-size: 1.2rem;
+  color: var(--texto-oscuro);
+}
+
+.categoria-tag {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  font-weight: bold;
+  padding: 0.2rem 0.6rem;
+  border-radius: 20px;
+  background-color: var(--secundario);
+  color: #1d5b73; 
+}
+
+.categoria-tag.ocio {
+  background-color: var(--destaque);
+  color: #431f73;
+} 
+
+/* --- DASHBOARD Y TOTALES --- */
+.contenedor-total {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--primario); 
+  color: var(--blanco);
+  padding: 1rem 1.5rem;
+  border-radius: 12px;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 4px 15px rgba(147, 126, 239, 0.3);
+}
+
+.contenedor-total p {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: var(--fondo-principal);
+}
+
+.contenedor-total h3 {
+  margin: 0;
+  font-size: 1.8rem;
+} 
+
+/* --- SELECTOR TIPO DE MOVIMIENTO --- */
+.selector-tipo {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.selector-tipo button {
+  flex: 1;
+  padding: 0.6rem;
+  border: 1px solid var(--borde-suave);
+  background: var(--fondo-principal);
+  color: var(--texto-suave);
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.selector-tipo button.activo {
+  background-color: var(--destaque);
+  color: var(--blanco);
+  border-color: var(--destaque);
+}
+
+/* Ingreso activo usa verde */
+.selector-tipo button.activo.ingreso {
+  background-color: #4CAF50;
+  border-color: #4CAF50;
+}
+
+/* --- DASHBOARD DE BALANCE --- */
+.dashboard-balance {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.balance-item, .balance-total {
+  background-color: var(--fondo-principal);
+  padding: 1rem;
+  border-radius: 12px;
+  text-align: center;
+  border: 1px solid var(--borde-suave);
+}
+
+.balance-total {
+  grid-column: 1 / -1; 
+  background-color: var(--primario);
+  color: var(--blanco);
+  box-shadow: 0 4px 15px rgba(147, 126, 239, 0.2);
+}
+
+.dashboard-balance p { margin: 0 0 0.5rem 0; font-size: 0.9rem; font-weight: bold;}
+.dashboard-balance h3 { margin: 0; font-size: 1.4rem; }
+.texto-ingreso, .gasto-monto.ingreso { color: #4CAF50; }
+.texto-gasto { color: #E53935; }
+.categoria-tag.ingreso { background-color: #E8F5E9; color: #2E7D32; }
+
+/* --- BOTÓN ELIMINAR --- */
+.gasto-acciones {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.btn-eliminar {
+  background: transparent;
+  border: none;
+  color: #bbb;
+  font-size: 1.2rem;
+  cursor: pointer;
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  transition: all 0.2s;
+}
+
+.btn-eliminar:hover {
+  background-color: #FFEFEF;
+  color: #E53935;
+}
+
+/* Detalle visual para diferenciar tarjetas de ingresos y gastos */
+.tarjeta-gasto.ingreso { border-left-color: #4CAF50; }
+.tarjeta-gasto.gasto { border-left-color: #E53935; }
+
+
+/* --- ACORDEÓN DE APARTADOS --- */
+.seccion-apartados {
+  /* Le quitamos el padding general para controlar mejor la caja interna */
+  padding: 0; 
+  overflow: hidden; /* Para que al cerrarse no se desborde nada */
+}
+
+.apartados-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.2rem 1.5rem;
+  background-color: var(--fondo-principal);
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.apartados-header:hover {
+  background-color: var(--borde-suave);
+}
+
+.apartados-titulo {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.apartados-titulo h2 {
+  margin: 0;
+  border-bottom: none;
+  padding: 0;
+}
+
+.badge-total {
+  background-color: var(--texto-oscuro);
+  color: var(--blanco);
+  padding: 0.2rem 0.6rem;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: bold;
+}
+
+.btn-toggle {
+  background: none;
+  border: none;
+  color: var(--texto-oscuro);
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+.apartados-contenido {
+  padding: 1.5rem;
+  border-top: 1px solid var(--borde-suave);
+}
+
+.btn-nuevo-apartado {
+  width: 100%;
+  padding: 0.8rem;
+  background-color: transparent;
+  border: 2px dashed var(--primario);
+  color: var(--primario);
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.btn-nuevo-apartado:hover {
+  background-color: var(--fondo-principal);
+}
+
+/* --- COLUMNA DERECHA --- */
+.columna-derecha {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem; /* Espacio exacto entre el Balance y los Apartados */
+}
+
+/* Evitamos que la tarjeta de balance sume un margen extra abajo */
+.columna-derecha .seccion-balance {
+  margin-bottom: 0;
+}
