@@ -8,6 +8,34 @@ function App() {
   
   const [movimientos, setMovimientos] = useState([]);
   const [apartados, setApartados] = useState([]);
+  const agregarApartado = (nuevoApartado)=>{
+        setApartados([...apartados, nuevoApartado]);
+    }
+  // Función para borrar un apartado usando su ID
+  const eliminarApartado = (id) => {
+    setApartados(apartados.filter((ap) => ap.id !== id));
+  };
+
+  const retirarApartado = (idApartado, montoRetiro, conceptoRetiro)=>{
+    setApartados(apartados.map(ap=>{
+      if(ap.id === idApartado){
+        return {...ap, cantidad: ap.cantidad - montoRetiro}
+      }
+      return ap
+    }));
+
+    const movimientoRetiro = {
+    id: Date.now(),
+    concepto: conceptoRetiro,
+    monto:Number(montoRetiro),
+    categoria:'apartado',
+    tipo: 'gasto'
+    
+    };
+    agregarMovimiento(movimientoRetiro); 
+  }
+
+  
 
 
   const agregarMovimiento = (nuevoMovimiento) => {
@@ -28,7 +56,7 @@ function App() {
     .filter(mov => mov.tipo === 'gasto')
     .reduce((acc, mov) => acc + mov.monto, 0);
 
-  const totalEnApartados= apartados.reduce((acc, ap) => ac + ap.cantidad, 0);
+  const totalEnApartados= apartados.reduce((acc, ap) => acc + ap.cantidad, 0);
 
   const balance = totalIngresos - totalGastos - totalEnApartados;
 
@@ -73,7 +101,12 @@ function App() {
         </section>
         <Apartados
         apartados={apartados}
-        totalEnApartados={totalEnApartados}/>
+        totalEnApartados={totalEnApartados}
+        onAgregarApartado={agregarApartado}
+        onEliminarApartado={eliminarApartado}
+        onRetirarApartado={retirarApartado}
+        />
+        
         </div>
       </main>
     </div>

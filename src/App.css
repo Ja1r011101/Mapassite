@@ -405,3 +405,139 @@ section h2 {
 .columna-derecha .seccion-balance {
   margin-bottom: 0;
 }
+
+/* --- MINI-FORMULARIO DE APARTADOS --- */
+.formulario-apartado {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  background-color: var(--fondo-principal);
+  padding: 1rem;
+  border-radius: 8px;
+  border: 1px solid var(--borde-suave);
+}
+
+.formulario-apartado input {
+  padding: 0.6rem;
+  border: 1px solid var(--borde-suave);
+  border-radius: 6px;
+  font-family: inherit;
+}
+
+.botones-apartado {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.btn-guardar-apartado, .btn-cancelar-apartado {
+  flex: 1;
+  padding: 0.6rem;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.btn-guardar-apartado {
+  background-color: var(--primario);
+  color: var(--blanco);
+}
+
+.btn-cancelar-apartado {
+  background-color: transparent;
+  color: var(--texto-suave);
+  border: 1px solid var(--borde-suave);
+}
+
+.btn-guardar-apartado:hover, .btn-cancelar-apartado:hover {
+  opacity: 0.8;
+}
+
+/* --- TARJETAS DE APARTADOS --- */
+.tarjeta-apartado {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background-color: var(--blanco);
+  border: 1px solid var(--secundario);
+  border-radius: 8px;
+  margin-bottom: 0.8rem;
+  transition: transform 0.2s;
+}
+
+.tarjeta-apartado:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(153, 217, 242, 0.3);
+}
+
+.apartado-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.apartado-info strong {
+  color: var(--texto-oscuro);
+  font-size: 1.05rem;
+}
+
+.apartado-info span {
+  color: var(--primario);
+  font-weight: bold;
+}
+
+.apartado-acciones {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.btn-eliminar-apartado {
+  background: transparent;
+  border: none;
+  color: #bbb;
+  font-size: 1.1rem;
+  cursor: pointer;
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  transition: all 0.2s;
+}
+
+.btn-eliminar-apartado:hover {
+  background-color: #FFEFEF;
+  color: #E53935;
+}
+
+/* --- ESTILOS MODO RETIRO --- */
+.btn-accion-apartado {
+  background-color: var(--secundario);
+  color: #1d5b73;
+  border: none;
+  padding: 0.3rem 0.8rem;
+  border-radius: 6px;
+  font-weight: bold;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-accion-apartado:hover {
+  background-color: var(--primario);
+  color: var(--blanco);
+  transform: translateY(-1px);
+}
+
+.modo-retiro {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  width: 100%;
+}
+
+.modo-retiro input {
+  padding: 0.5rem;
+  border: 1px solid var(--borde-suave);
+  border-radius: 6px;
+  font-family: inherit;
+}
